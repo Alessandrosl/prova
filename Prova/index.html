@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gerenciador de Itens</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Itens</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Gerenciador de Itens</h1>
-    <input type="text" id="itemInput" placeholder="Nome do item" />
-    
-    <div id="buttons">
-      <button id="addBtn">Adicionar Item</button>
-      <button id="updateBtn" class="hidden">Atualizar Item</button>
-      <button id="cancelBtn" class="hidden red">Cancelar</button>
+    <div class="container">
+        <!-- Tela de Adição -->
+        <div id="screen-add" class="screen active">
+            <h1>Gerenciador de Itens</h1>
+            <div class="items-list" id="items-list"></div>
+            <div class="input-group">
+                <input type="text" id="item-input" placeholder="Nome do item">
+                <button class="btn-add" onclick="addItem()">Adicionar Item</button>
+            </div>
+        </div>
+
+        <!-- Tela de Edição -->
+        <div id="screen-edit" class="screen">
+            <h1>Gerenciador de Itens</h1>
+            <div class="input-group">
+                <input type="text" id="edit-input" placeholder="Nome do item">
+                <button class="btn-update" onclick="updateItem()">Atualizar Item</button>
+                <button class="btn-cancel" onclick="cancelEdit()">Cancelar</button>
+            </div>
+            <div class="edit-item" id="edit-item-display">
+                <span class="edit-item-text"></span>
+                <div class="edit-item-actions">
+                    <button class="btn-edit" onclick="confirmEditFromDisplay()">Editar</button>
+                    <button class="btn-delete" onclick="startDeleteFromDisplay()">Excluir</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <ul id="itemList"></ul>
-  </div>
+    <!-- Modal de Confirmação -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Essa página diz</div>
+            <div class="modal-message">Tem certeza que deseja excluir este item?</div>
+            <div class="modal-buttons">
+                <button class="btn-modal-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="btn-modal-ok" onclick="confirmDelete()">OK</button>
+            </div>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
